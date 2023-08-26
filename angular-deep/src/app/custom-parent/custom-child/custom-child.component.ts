@@ -14,6 +14,7 @@ export interface ItemDetails {
 export class CustomChildComponent implements OnInit {
 
   @Input() inputFromParent?: string;
+  // @Input() inputObject:{type:string,value:number,content:string};
   model?: ItemDetails[] = [];
   @Output() outputFromChild = new EventEmitter<any>();
   products?: any[]

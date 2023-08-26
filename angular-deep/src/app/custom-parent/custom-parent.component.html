@@ -1,2 +1,11 @@
 <p>custom-parent works!</p>
-<app-custom-child [inputFromParent]='inputToChild' (outputFromChild)='onChildEvent($event)'></app-custom-child>
+<h1>SETTER:{{ParentName}}</h1>
+<div *ngIf="templateVisiblity; else myTemplate">
+    Hello Ji, I am from div.
+</div>
+<ng-template #myTemplate>
+    <p>Hello Ji, I am from ngTemplate</p>
+</ng-template>
+<app-custom-child [inputFromParent]='inputToChild' (outputFromChild)='onChildEvent($event)'>
+    <h1 title>Test for ng-content</h1>
+</app-custom-child>
