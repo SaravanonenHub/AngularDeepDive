@@ -6,6 +6,7 @@ import { AfterViewComponent } from './after-view.component';
 import { AfterViewParentComponent } from './after-view-parent.component';
 import { AfterContentParentComponent } from './after-content-parent.component';
 import { DoCheckParentComponent } from './do-check-parent.component';
+import { ComponentInteractionModule } from './component-interaction/component-interaction.module';
 
 const routes: Routes = [
   {path:'spy',component:SpyComponent}
@@ -13,6 +14,9 @@ const routes: Routes = [
   ,{path:'AfterViewChange',component:AfterViewParentComponent}
   ,{path:'AfterContentChange',component:AfterContentParentComponent}
   ,{path:'doCheck',component:DoCheckParentComponent}
+  ,{path:'interaction', loadChildren:() => 
+            import('./component-interaction/component-interaction.module').then(res => res.ComponentInteractionModule)}
+  ,{path:'projection',loadChildren:() => import('./content-projection/content-projection.module').then(res => res.ContentProjectionModule)}
 ];
 
 @NgModule({

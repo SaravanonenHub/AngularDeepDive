@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 export interface ItemDetails {
   qty: number,
   rate: number,
@@ -11,14 +12,18 @@ export interface ItemDetails {
 })
 
 
-export class CustomChildComponent implements OnInit {
+export class CustomChildComponent implements OnInit,AfterContentInit {
 
   @Input() inputFromParent?: string;
   // @Input() inputObject:{type:string,value:number,content:string};
   model?: ItemDetails[] = [];
+  @ContentChild('titleHead') title:any; 
   @Output() outputFromChild = new EventEmitter<any>();
   products?: any[]
   constructor() { }
+  ngAfterContentInit(): void {
+    console.log(this.title.nativeElement.innerHTML);
+  }
 
   ngOnInit(): void {
 
