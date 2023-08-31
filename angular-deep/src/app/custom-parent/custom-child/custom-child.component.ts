@@ -1,9 +1,15 @@
-import { AfterContentInit, Component, ContentChild, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, ContentChild, Directive, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 export interface ItemDetails {
   qty: number,
   rate: number,
   amount: number
+}
+@Directive({
+  selector:'[pTemplateAccess]'
+})
+export class TemplateAcessDirective{
+  constructor(public templateRef:TemplateRef<unknown>){}
 }
 @Component({
   selector: 'app-custom-child',
@@ -15,14 +21,17 @@ export interface ItemDetails {
 export class CustomChildComponent implements OnInit,AfterContentInit {
 
   @Input() inputFromParent?: string;
+  @Input() content!:TemplateRef<unknown>;
   // @Input() inputObject:{type:string,value:number,content:string};
   model?: ItemDetails[] = [];
-  @ContentChild('titleHead') title:any; 
+  // templateRef!:TemplateRef<unknown>;
+  //@ContentChild(TemplateAcessDirective) content!:TemplateAcessDirective;
+  // @ContentChild('titleHead') title:any; 
   @Output() outputFromChild = new EventEmitter<any>();
   products?: any[]
   constructor() { }
   ngAfterContentInit(): void {
-    console.log(this.title.nativeElement.innerHTML);
+    // console.log(this.title.nativeElement.innerHTML);
   }
 
   ngOnInit(): void {

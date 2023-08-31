@@ -6,6 +6,8 @@
 <ng-template #myTemplate>
     <p>Hello Ji, I am from ngTemplate</p>
 </ng-template>
-<app-custom-child [inputFromParent]='inputToChild' (outputFromChild)='onChildEvent($event)'>
-    <h1  #titleHead>Test for ng-content</h1>
+<app-custom-child [inputFromParent]='inputToChild' (outputFromChild)='onChildEvent($event)' [content] = "pTemplateAccess">
+    <ng-template #pTemplateAccess>
+        <h1>All is well, Heartiley battery charge tha all is well ❤️</h1>
+    </ng-template>
 </app-custom-child>

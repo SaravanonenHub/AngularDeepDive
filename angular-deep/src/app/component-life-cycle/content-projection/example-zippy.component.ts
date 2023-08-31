@@ -13,19 +13,18 @@ export class ZippyToggleDirective{
   constructor(public zippy:ExampleZippyComponent){}
 }
 
-
+let nextId = 0;
 @Directive({
   selector:'[appExampleZippyContent]'
 })
 export class ZippyContentDirective{
   constructor(public templateRef:TemplateRef<unknown>){}
 }
-let nextId = 0;
+
 @Component({
   selector: 'app-example-zippy',
   templateUrl: './example-zippy.component.html',
-  styles: [
-  ]
+  
 })
 export class ExampleZippyComponent  {
 
