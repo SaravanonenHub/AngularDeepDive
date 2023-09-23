@@ -1,5 +1,7 @@
-import { AfterContentInit, Component, ContentChild, Directive, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChild, Directive, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ZippyContentAttribute } from '../appZippyExample.directive';
+import { Pane } from '../pane.directive';
 export interface ItemDetails {
   qty: number,
   rate: number,
@@ -18,10 +20,21 @@ export class TemplateAcessDirective{
 })
 
 
-export class CustomChildComponent implements OnInit,AfterContentInit {
+export class CustomChildComponent implements OnInit,AfterContentInit, AfterViewInit {
 
+  
+  public hero="test";
+  @ViewChild('default') defaultElement!:ElementRef;
+  @ViewChild(Pane)
+  set pane(v:Pane){
+    setTimeout(() => {
+      console.log(v.id)
+    },0)
+  }
+  
   @Input() inputFromParent?: string;
   @Input() content!:TemplateRef<unknown>;
+  @ContentChild(ZippyContentAttribute) zipContent!: ZippyContentAttribute; 
   // @Input() inputObject:{type:string,value:number,content:string};
   model?: ItemDetails[] = [];
   // templateRef!:TemplateRef<unknown>;
@@ -29,13 +42,21 @@ export class CustomChildComponent implements OnInit,AfterContentInit {
   // @ContentChild('titleHead') title:any; 
   @Output() outputFromChild = new EventEmitter<any>();
   products?: any[]
-  constructor() { }
+  
+  constructor(private elementRef:ElementRef) { 
+    
+  }
+  ngAfterViewInit(): void {
+    this.defaultElement.nativeElement.innerHTML = 'red';
+    console.log(this.defaultElement)
+  }
   ngAfterContentInit(): void {
     // console.log(this.title.nativeElement.innerHTML);
+    
   }
 
   ngOnInit(): void {
-
+   
   }
   onButtonClick() {
 

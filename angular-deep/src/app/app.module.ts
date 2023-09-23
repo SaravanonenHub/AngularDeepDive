@@ -11,6 +11,8 @@ import { FormsDeepComponent } from './forms-deep/forms-deep.component';
 import { PeekABooParentComponent } from './component-life-cycle/peek-a-boo-parent.component';
 import { PeekABooDirective } from './component-life-cycle/peek-a-boo.directive';
 import { PeekABooComponent } from './component-life-cycle/peek-a-boo.component';
+import { ZippyContentAttribute } from './custom-parent/appZippyExample.directive';
+import { Pane } from './custom-parent/pane.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { PeekABooComponent } from './component-life-cycle/peek-a-boo.component';
     PeekABooParentComponent,
     PeekABooDirective,
     PeekABooComponent,
-
+    ZippyContentAttribute,
+    Pane
   ],
   imports: [
     BrowserModule,

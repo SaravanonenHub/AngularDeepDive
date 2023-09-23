@@ -11,7 +11,9 @@ const routes: Routes = [
   {path:'lifeHook'
       ,loadChildren:() => 
           import('./component-life-cycle/component-life-cycle.module')
-          .then(res => res.ComponentLifeCycleModule)}
+          .then(res => res.ComponentLifeCycleModule)},
+  {path:'apiCore', loadChildren:() => import('./core-api/core-api.module')
+                                      .then(res => res.CoreAPIModule)},
 ];
 
 @NgModule({

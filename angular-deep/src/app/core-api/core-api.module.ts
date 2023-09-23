@@ -3,11 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { CoreAPIRoutingModule } from './core-api-routing.module';
 import { LearningModuleComponent } from './learning-module.component';
+import { CustomComponent } from './custom.component';
+import {  ViewContainerComponent } from './view-container.component';
 
 
 @NgModule({
   declarations: [
-    LearningModuleComponent
+    LearningModuleComponent,
+    CustomComponent,
+    ViewContainerComponent,
+    
   ],
   imports: [
     CommonModule,
