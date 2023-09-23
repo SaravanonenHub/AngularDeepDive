@@ -1,0 +1,10 @@
+<input type="text" [formControl]="ctrl" />
+<div>
+    <code>observable | async </code> : Time: {{time | async}}
+</div>
+<form [formGroup]="frmGroup">
+    <input type="text" formControlName="userName" /><br />
+    <input type="text" formControlName="emailId" /><br />
+    <input type="text" formControlName="title" /><br />
+    <pre>{{frmGroup.value | json}}</pre>
+</form>

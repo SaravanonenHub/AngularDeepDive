@@ -1,0 +1,20 @@
+<p>custom-parent works!</p>
+<h1>SETTER:{{ParentName}}</h1>
+<div *ngIf="templateVisiblity; else myTemplate">
+    Hello Ji, I am from div.
+</div>
+<ng-template #myTemplate>
+    <p>Hello Ji, I am from ngTemplate</p>
+</ng-template>
+<app-custom-child [inputFromParent]='inputToChild' (outputFromChild)='onChildEvent($event)' [content] = "pTemplateAccess">
+    <ng-template #pTemplateAccess>
+        <h1>All is well, Heartiley battery charge tha all is well ❤️</h1>
+    </ng-template>
+    <ng-template zippyAttribute>
+        The most basic form of content projection is single-slot content projection. 
+        Single-slot content projection refers to creating a component into which you can project one component.
+    </ng-template>
+</app-custom-child>
+<div #codeEditor>
+    
+</div>

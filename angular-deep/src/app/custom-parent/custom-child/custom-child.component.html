@@ -1,0 +1,14 @@
+<p>{{inputFromParent}}</p>
+<ng-container [ngTemplateOutlet]="content"></ng-container>
+<ng-container [ngTemplateOutlet]="zipContent.templateRef">
+
+</ng-container>
+<pane id="1"></pane>
+<button type="button" (click)="onButtonClick()">
+    Click me
+</button>
+<div #default>
+    <input type="text"  />
+</div>
+
+<input type="text" [(ngModel)] ="hero"/>
