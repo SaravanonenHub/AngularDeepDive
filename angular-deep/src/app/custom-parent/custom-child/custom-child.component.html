@@ -3,6 +3,7 @@
 <ng-container [ngTemplateOutlet]="zipContent.templateRef">
 
 </ng-container>
+<ng-content select="[parentContent]"></ng-content>
 <pane id="1"></pane>
 <button type="button" (click)="onButtonClick()">
     Click me

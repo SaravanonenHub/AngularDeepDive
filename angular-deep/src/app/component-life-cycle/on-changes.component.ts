@@ -17,11 +17,12 @@ import { JsonPipe } from '@angular/common';
 })
 export class OnChangesComponent implements OnInit,OnChanges {
   @Input() hero!:Hero;
-  @Input() power='';
+  @Input() power:any;
   changeLogs:string[]=[];
 
   constructor() { }
   ngOnChanges(changes: SimpleChanges): void {
+    
     for(const propName in changes){
       const chng = changes[propName];
       const currValue = JSON.stringify(chng.currentValue);

@@ -14,6 +14,7 @@ const routes: Routes = [
           .then(res => res.ComponentLifeCycleModule)},
   {path:'apiCore', loadChildren:() => import('./core-api/core-api.module')
                                       .then(res => res.CoreAPIModule)},
+  {path:'directive', loadChildren:() => import('./directive-learn/directive-learn.module').then(res => res.DirectiveLearnModule)}
 ];
 
 @NgModule({

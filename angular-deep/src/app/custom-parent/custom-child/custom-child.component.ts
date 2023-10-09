@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChild, Directive, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, ContentChild, Directive, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ZippyContentAttribute } from '../appZippyExample.directive';
 import { Pane } from '../pane.directive';
@@ -20,11 +20,12 @@ export class TemplateAcessDirective{
 })
 
 
-export class CustomChildComponent implements OnInit,AfterContentInit, AfterViewInit {
+export class CustomChildComponent implements OnInit,AfterContentInit,AfterContentChecked, AfterViewInit {
 
   
   public hero="test";
   @ViewChild('default') defaultElement!:ElementRef;
+  @ViewChild('parentContent') parentContent!:ElementRef;
   @ViewChild(Pane)
   set pane(v:Pane){
     setTimeout(() => {
@@ -46,13 +47,17 @@ export class CustomChildComponent implements OnInit,AfterContentInit, AfterViewI
   constructor(private elementRef:ElementRef) { 
     
   }
+  ngAfterContentChecked(): void {
+    //console.log(`Parent Content: ${this.parentContent}`);
+  }
   ngAfterViewInit(): void {
     this.defaultElement.nativeElement.innerHTML = 'red';
-    console.log(this.defaultElement)
+    console.log(this.defaultElement.nativeElement)
+    console.log(`Parent Content: ${this.parentContent.nativeElement.innerHTML}`);
   }
   ngAfterContentInit(): void {
-    // console.log(this.title.nativeElement.innerHTML);
-    
+    //console.log(`Parent Content: ${this.parentContent.nativeElement.innerHTML}`);
+   
   }
 
   ngOnInit(): void {

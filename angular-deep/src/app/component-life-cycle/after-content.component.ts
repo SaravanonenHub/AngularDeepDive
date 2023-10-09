@@ -23,6 +23,7 @@ export class AfterContentComponent implements  AfterContentChecked, AfterContent
   
   ngAfterContentInit(): void {
     this.logIt('AfterContent Init');
+    console.log(`Child Hero: ${this.contentChild.hero}`);
     this.doSomething();
   }
   ngAfterContentChecked(): void {

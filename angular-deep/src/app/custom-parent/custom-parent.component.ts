@@ -16,7 +16,7 @@ export class CustomParentComponent implements OnInit,AfterViewChecked,AfterViewI
   private _parentName:string ="PARENT NAME";
   private prevValue="";
   templateVisiblity:boolean = false;
-  @ViewChild(CustomChildComponent) childComponent!:CustomChildComponent;
+  @ViewChild(CustomChildComponent,{read:true,static:false}) childComponent!:CustomChildComponent;
   @ViewChild('codeEditor') codeEditorElement!:ElementRef;
   private codeEditor!:ace.Ace.Editor;
 
